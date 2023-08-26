@@ -13,8 +13,9 @@
 	"scripts": {
 		"start:watch": "nodemon src/index.ts",
 		"start:inspect": "nodemon --inspect src/index.ts",
-		"deploy": "serverless deploy -s prod",
-		"build": "tsc"
+		"deploy": "npm run pack && npm run build && sls deploy -s prod",
+		"pack": "cd ./deps-layer/nodejs && pnpm install --prod",
+		"build": "rimraf .build && tsc"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.17",
@@ -23,6 +24,7 @@
 		"@typescript-eslint/parser": "^6.4.1",
 		"eslint": "^8.48.0",
 		"nodemon": "^3.0.1",
+		"rimraf": "^5.0.1",
 		"serverless": "^3.34.0",
 		"ts-node": "^10.9.1",
 		"typescript": "^5.2.2"
