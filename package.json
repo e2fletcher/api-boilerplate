@@ -11,8 +11,8 @@
 		"express": "^4.18.2"
 	},
 	"scripts": {
-		"start:watch": "nodemon src/index.ts",
-		"start:inspect": "nodemon --inspect src/index.ts",
+		"start:watch": "NODE_ENV=development nodemon src/server.ts",
+		"start:inspect": "NODE_ENV=development nodemon --inspect src/server.ts",
 		"deploy": "npm run pack && npm run build && sls deploy -s prod",
 		"pack": "cd ./deps-layer/nodejs && pnpm install --prod",
 		"build": "rimraf .build && tsc"
@@ -27,6 +27,7 @@
 		"rimraf": "^5.0.1",
 		"serverless": "^3.34.0",
 		"ts-node": "^10.9.1",
+		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.2.2"
 	}
 }
